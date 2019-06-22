@@ -89,24 +89,16 @@ func main() {
 		Handler: h.Handler(),
 	}
 
-<<<<<<< HEAD:cmd/go_httpbin/main.go
 	var listenErr error
 	if httpsCertFile != "" && httpsKeyFile != "" {
 		cert, err := tls.LoadX509KeyPair(httpsCertFile, httpsKeyFile)
 		if err != nil {
 			logger.Fatal("Failed to generate https key pair: ", err)
-=======
-	if httpsCertFile != "" && httpsKeyFile != "" {
-		cert, err := tls.LoadX509KeyPair(httpsCertFile, httpsKeyFile)
-		if err != nil {
-			log.Fatal("Failed to generate https key pair: ", err)
->>>>>>> e33bfd6eec4cc56ce9dad5ae1339f865fa59b90c:cmd/go-httpbin/main.go
 		}
 		server.TLSConfig = &tls.Config{
 			Certificates: []tls.Certificate{cert},
 		}
 		logger.Printf("go-httpbin listening on https://%s", listenAddr)
-<<<<<<< HEAD:cmd/go_httpbin/main.go
 		listenErr = server.ListenAndServeTLS("", "")
 	} else {
 		logger.Printf("go-httpbin listening on http://%s", listenAddr)
@@ -114,11 +106,5 @@ func main() {
 	}
 	if listenErr != nil {
 		logger.Fatalf("Failed to listen: %s", listenErr)
-=======
-		server.ListenAndServeTLS("", "")
-	} else {
-		logger.Printf("go-httpbin listening on http://%s", listenAddr)
-		server.ListenAndServe()
->>>>>>> e33bfd6eec4cc56ce9dad5ae1339f865fa59b90c:cmd/go-httpbin/main.go
 	}
 }
